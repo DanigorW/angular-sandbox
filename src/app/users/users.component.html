@@ -1,0 +1,24 @@
+<h2>Users</h2>
+
+<button (click)="addUser()" [disabled]="!enableAdd" class="btn btn-primary mb-4">Add user</button>
+
+<ul *ngIf="users.length > 0">
+  <li class="card card-body mb-4" *ngFor="let user of users" [ngStyle]="{'background': 'rgb(240, 240, 240)'}">
+
+    <div class="col-sm-12">
+      <h3>{{user.firstName}} {{user.lastName}} 
+          <small><button class="btn btn-dark" (click)="user.hide = !user.hide">
+            <i class="fa fa-plus"></i></button>
+        </small>
+        </h3>
+      <ul *ngIf="!user.hide" class="list-group">
+        <li class="list-group-item">{{user.age}}</li>
+        <li class="list-group-item">{{user.email}}</li>
+        <li class="list-group-item">{{user.date | date:"d-MM-y"}}</li>
+      </ul>
+    </div>
+
+  </li>
+</ul>
+
+<h4 *ngIf="users.length === 0">no users found</h4>
